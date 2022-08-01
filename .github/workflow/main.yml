@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          file: ./${{ matrix.os }}/Dockerfile
+          file: ./Dockerfile
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/:asciinema_playground
           cache-from: ${{ secrets.DOCKERHUB_USERNAME }}/:asciinema_playground
-          build-args: BUILDKIT_INLINE_CACHE=1
+          # build-args: BUILDKIT_INLINE_CACHE=1
