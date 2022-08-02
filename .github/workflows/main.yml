@@ -31,4 +31,4 @@ jobs:
           file: ./Dockerfile
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker_terminal_demos:latest
           cache-from: ${{ secrets.DOCKERHUB_USERNAME }}/docker_terminal_demos:latest
-          # build-args: BUILDKIT_INLINE_CACHE=1
+          build-args: BUILDKIT_INLINE_CACHE=1

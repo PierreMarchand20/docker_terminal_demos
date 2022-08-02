@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20220428 AS asciinema_playground
+FROM ubuntu:jammy-20220428 AS asciinema_playground_base
 
 WORKDIR /root
 
@@ -13,11 +13,13 @@ RUN apt-get update \
     python3-pip python3-dev\
     && pip3 --no-cache-dir install --upgrade pip \
     && pip3 --no-cache-dir install wheel setuptools asciinema \
-    && git clone https://github.com/PierreMarchand20/asciinema_automation.git \
-    && cd asciinema_automation \
-    && pip3 install . \
     && rm -rf /var/lib/apt/lists/*
 
+FROM asciinema_playground_base AS asciinema_playground
+
+RUN git clone https://github.com/PierreMarchand20/asciinema_automation.git \
+    && cd asciinema_automation \
+    && pip3 --no-cache-dir install . 
 
 #### ADD DEFAULT USER ####
 ARG USER=Bob
