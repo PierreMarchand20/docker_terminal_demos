@@ -11,6 +11,9 @@ RUN apt-get update \
     git \
     vim \
     python3-pip python3-dev\
+    man \
+    less \
+    && yes | unminimize \
     && pip3 --no-cache-dir install --upgrade pip \
     && pip3 --no-cache-dir install wheel setuptools asciinema \
     && rm -rf /var/lib/apt/lists/*
